@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Header</title>
+    <style>
+        a, .MyClass
+        {
+            text-decoration: none;
+            font-family: Algerian;
+            font-size: 35px;
+            color: white;
+            background-image: url("space2.jpg");
+        }
+        table
+        {
+            border-spacing: 40px 5px;
+        }
+        a
+        {
+            font-size: 20px;
+        }
+        th
+        {
+            vertical-align: bottom;
+            border-bottom: 2px solid #fcfffd;
+        }
+    </style>
+</head>
+<body class="MyClass">
+<table>
+    <tr>
+        <td><b>МОЯ СТРАНИЦА</b></td>
+        <th onmouseenter="increaseColor('a1')" onmouseleave="decreaseColor('a1')">
+            <a href="Biography.html" target="content" id="a1">БИОГРАФИЯ</a>
+        </th>
+        <th onmouseenter="increaseColor('a2')" onmouseleave="decreaseColor('a2')">
+            <a href="Work.html" target="content" id = "a2">РАБОТА</a>
+        </th>
+        <th onmouseenter="increaseColor('a3')" onmouseleave="decreaseColor('a3')">
+            <a href="Hobby.html" target="content" id = "a3">ОТДЫХ</a>
+        </th>
+        <th onmouseenter="increaseColor('a4')" onmouseleave="decreaseColor('a4')">
+            <a href="Contacts.html" target="content" id = "a4">ОБРАТНАЯ СВЯЗЬ</a>
+        </th>
+        <th id="timecell">
+        </th>
+    </tr>
+</table>
+</body>
+<script type="text/javascript">
+    function increaseTimer() {
+        seconds++;
+        if(seconds >= 60)
+        {
+            seconds = 0;
+            minutes++;
+            if(minutes >= 60)
+            {
+                hours++;
+                if(hours >= 24)
+                {
+                    console.log("Stopping timer");
+                    clearInterval(timer);
+                }
+            }
+        }
+        var secStr = seconds >= 10 ? seconds.toString() : "0"+seconds.toString();
+        var hrsStr = hours >= 10 ? hours.toString() : "0"+hours.toString();
+        var minStr = minutes >= 10 ? minutes.toString() : "0"+minutes.toString();
+        result = hrsStr + ":"+minStr+":"+secStr;
+        document.getElementById("timecell").innerHTML = result;
+        console.log(result);
+    }
+    function increaseColor(id) {
+        var e = window.event.srcElement;
+        document.getElementById(id).style.color = 'red';
+        e.style.borderColor ='red';
+    }
+    function decreaseColor(id) {
+        var e = window.event.srcElement;
+        document.getElementById(id).style.color = "white";
+        e.style.borderColor ="white";
+    }
+    var seconds = 0;
+    var minutes = 0;
+    var hours = 0;
+    var result = "";
+    var timer;
+    window.onload = function () {
+        timer = setInterval(increaseTimer(),1000);
+    }
+</script>
+</html>
